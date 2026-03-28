@@ -177,6 +177,31 @@ mark.current {
   border-top: 1px solid #e8e8e8;
   font-family: Arial, sans-serif;
 }
+/* ── Responsive / mobile ── */
+@media (max-width: 620px) {
+  .topbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .topbar-title { display: none; }
+  .topbar-sep   { display: none; }
+  .topbar select { flex: 1; min-width: 0; }
+  .search-group {
+    width: 100%;
+    margin-left: 0;
+  }
+  .search-group input[type=text] {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+  h1, h2, h3 { scroll-margin-top: 108px; }
+  .page { padding-left: 18px; padding-right: 18px; }
+  .bq { margin-left: 1.2em; margin-right: 1.2em; }
+}
+
 /* ── BibleGateway reference links ── */
 a.bibleref, #content a[href*="biblegateway"] {
   color: inherit;
