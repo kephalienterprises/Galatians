@@ -3,17 +3,14 @@ var NAV_CHAPTERS = [3, 4];
 
 var NAV_SECTIONS = {
   '3': [
-    {label: '3:1\u201318',                        id: 'gal-3-1-18'},
-    {label: '3:19',                               id: 'gal-3-19'},
-    {label: '\u2514 Ordained Through Angels',     id: 'gal-3-19-angels'},
-    {label: '\u2514 By the Hand of a Mediator',  id: 'gal-3-19-mediator'},
-    {label: '3:20',                               id: 'gal-3-20'},
-    {label: '3:21',                               id: 'gal-3-21'},
-    {label: '3:22',                               id: 'gal-3-22'},
-    {label: '3:23',                               id: 'gal-3-23'},
-    {label: '3:24',                               id: 'gal-3-24'},
-    {label: '3:25',                               id: 'gal-3-25'},
-    {label: 'Summary 3:19\u201325',              id: 'gal-3-summary'}
+    {label: '3:1\u201318', id: 'gal-3-1-18'},
+    {label: '3:19',        id: 'gal-3-19'},
+    {label: '3:20',        id: 'gal-3-20'},
+    {label: '3:21',        id: 'gal-3-21'},
+    {label: '3:22',        id: 'gal-3-22'},
+    {label: '3:23',        id: 'gal-3-23'},
+    {label: '3:24',        id: 'gal-3-24'},
+    {label: '3:25',        id: 'gal-3-25'}
   ],
   '4': [
     {label: '4:1', id: 'gal-4-1'},
