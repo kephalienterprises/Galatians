@@ -232,6 +232,59 @@ mark.current {
   border-top: 1px solid var(--ts-border);
   font-family: Arial, sans-serif;
 }
+/* ── Language toggle ── */
+.lang-toggle { display: flex; gap: 4px; align-items: center; }
+.lang-btn {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  padding: 3px 7px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+}
+.lang-btn:hover { color: white; border-color: rgba(255,255,255,0.5); }
+.lang-btn.lang-active {
+  color: white;
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ── Chapter prev/next buttons ── */
+.chap-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  background: var(--topbar-bg);
+  color: rgba(255,255,255,0.7);
+  border: none;
+  padding: 18px 7px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.25);
+}
+.chap-nav:hover { background: var(--h2-color); color: white; }
+.chap-prev { left: 0; border-radius: 0 6px 6px 0; }
+.chap-next { right: 0; border-radius: 6px 0 0 6px; }
+.chap-arrow { font-size: 20px; line-height: 1; }
+.chap-label {
+  font-size: 10px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.chap-prev .chap-label { transform: rotate(180deg); }
+
 /* ── Responsive / mobile ── */
 @media (max-width: 620px) {
   .topbar {
@@ -255,6 +308,20 @@ mark.current {
   h1, h2, h3 { scroll-margin-top: 108px; }
   .page { padding-left: 18px; padding-right: 18px; }
   .bq { margin-left: 1.2em; margin-right: 1.2em; }
+  .chap-nav {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+    flex-direction: row;
+    padding: 10px 14px;
+    gap: 6px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .chap-prev { left: 12px; border-radius: 6px; }
+  .chap-next { right: 12px; border-radius: 6px; }
+  .chap-label { writing-mode: horizontal-tb; transform: none; font-size: 12px; }
+  .chap-arrow { font-size: 16px; }
 }
 
 /* ── BibleGateway reference links ── */

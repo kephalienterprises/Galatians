@@ -1,54 +1,3 @@
-const sectionData = {
-  '3': [
-    {label: '3:1\u201318', id: 'gal-3-1-18'},
-    {label: '3:19', id: 'gal-3-19'},
-    {label: '\u2514 Ordained Through Angels', id: 'gal-3-19-angels'},
-    {label: '\u2514 By the Hand of a Mediator', id: 'gal-3-19-mediator'},
-    {label: '3:20', id: 'gal-3-20'},
-    {label: '3:21', id: 'gal-3-21'},
-    {label: '3:22', id: 'gal-3-22'},
-    {label: '3:23', id: 'gal-3-23'},
-    {label: '3:24', id: 'gal-3-24'},
-    {label: '3:25', id: 'gal-3-25'},
-    {label: 'Summary 3:19\u201325', id: 'gal-3-summary'}
-  ],
-  '4': [
-    {label: '4:1', id: 'gal-4-1'},
-    {label: '4:2', id: 'gal-4-2'},
-    {label: '4:3', id: 'gal-4-3'}
-  ]
-};
-
-function onChapterChange() {
-  const ch = document.getElementById('chapterSel').value;
-  const vs = document.getElementById('verseSel');
-  vs.innerHTML = '<option value="">\u2014 Verse \u2014</option>';
-  vs.disabled = !ch;
-  if (ch) {
-    sectionData[ch].forEach(function(s) {
-      const o = document.createElement('option');
-      o.value = s.id;
-      o.textContent = s.label;
-      vs.appendChild(o);
-    });
-    scrollToId('gal-' + ch);
-  }
-}
-
-function onVerseChange() {
-  const id = document.getElementById('verseSel').value;
-  if (id) scrollToId(id);
-}
-
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const bar = document.querySelector('.topbar');
-  const offset = bar ? bar.offsetHeight + 16 : 68;
-  const y = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({top: y, behavior: 'smooth'});
-}
-
 // ── Search ──────────────────────────────────────────────────────────────────
 var matches = [];
 var cur = -1;
@@ -155,7 +104,7 @@ function updateUI() {
   var countEl = document.getElementById('matchCount');
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
-  var clrBtn = document.getElementById('clearBtn');
+  var clrBtn  = document.getElementById('clearBtn');
 
   if (term && matches.length === 0) {
     countEl.textContent = 'No matches';
