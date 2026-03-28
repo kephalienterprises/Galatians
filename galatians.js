@@ -172,6 +172,26 @@ function updateUI() {
   clrBtn.style.display = term ? 'flex' : 'none';
 }
 
+// ── Dark mode ────────────────────────────────────────────────────────────────
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  var btn = document.getElementById('themeBtn');
+  if (btn) btn.textContent = theme === 'dark' ? '\u2600' : '\uD83C\uDF19';
+  localStorage.setItem('theme', theme);
+}
+
+function toggleTheme() {
+  var current = document.documentElement.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+(function initTheme() {
+  var saved = localStorage.getItem('theme');
+  if (saved) { applyTheme(saved); return; }
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(prefersDark ? 'dark' : 'light');
+})();
+
 // ── BibleGateway tooltips ────────────────────────────────────────────────────
 BGLinks.version = "LSB";
 BGLinks.showTooltips = true;

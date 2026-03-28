@@ -1,16 +1,71 @@
+/* ── CSS custom properties ── */
+:root {
+  --bg:             #f5f3ef;
+  --text:           #1a1f2e;
+  --topbar-bg:      #2E4057;
+  --topbar-opt-bg:  #2E4057;
+  --title-color:    #2E4057;
+  --subtitle-color: #888;
+  --divider-color:  #2E4057;
+  --h1-color:       #2E4057;
+  --h1-border:      #c5d0dc;
+  --h2-color:       #4A6FA5;
+  --h3-color:       #6B8CAE;
+  --src-color:      #b0b0b0;
+  --bq-color:       #444;
+  --bq-border:      #c8d4e0;
+  --bq-ref:         #1a1f2e;
+  --mark-bg:        #fff176;
+  --mark-text:      inherit;
+  --mark-cur-bg:    #ff8f00;
+  --mark-cur-text:  white;
+  --ts-color:       #ccc;
+  --ts-border:      #e8e8e8;
+  --ref-border:     #8aaac8;
+  --ref-hover:      #4A6FA5;
+  --topbar-title:   #a8c4e0;
+}
+
+[data-theme="dark"] {
+  --bg:             #1c1f28;
+  --text:           #c8c4ba;
+  --topbar-bg:      #141720;
+  --topbar-opt-bg:  #1c2030;
+  --title-color:    #6a90b8;
+  --subtitle-color: #606060;
+  --divider-color:  #2a3d52;
+  --h1-color:       #6a90b8;
+  --h1-border:      #2a3545;
+  --h2-color:       #4e7aa0;
+  --h3-color:       #4e6a84;
+  --src-color:      #505050;
+  --bq-color:       #8a8278;
+  --bq-border:      #2a3545;
+  --bq-ref:         #c8c4ba;
+  --mark-bg:        #4a4200;
+  --mark-text:      #e8de90;
+  --mark-cur-bg:    #7a4800;
+  --mark-cur-text:  #ffe0a0;
+  --ts-color:       #404040;
+  --ts-border:      #252830;
+  --ref-border:     #3a5a78;
+  --ref-hover:      #6a90b8;
+  --topbar-title:   #5a7a98;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #1a1f2e;
-  background: #f5f3ef;
+  color: var(--text);
+  background: var(--bg);
 }
 .topbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #2E4057;
+  background: var(--topbar-bg);
   color: white;
   padding: 0 20px;
   display: flex;
@@ -23,7 +78,7 @@ body {
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 14px;
-  color: #a8c4e0;
+  color: var(--topbar-title);
   white-space: nowrap;
   margin-right: 4px;
 }
@@ -39,7 +94,7 @@ body {
   outline: none;
   font-family: Arial, sans-serif;
 }
-.topbar select option { background: #2E4057; color: white; }
+.topbar select option { background: var(--topbar-opt-bg); color: white; }
 .topbar select:focus { border-color: rgba(255,255,255,0.55); }
 .topbar select:disabled { opacity: 0.45; cursor: default; }
 .topbar-sep {
@@ -103,13 +158,13 @@ body {
   font-family: Arial, sans-serif;
   font-size: 26pt;
   font-weight: bold;
-  color: #2E4057;
+  color: var(--title-color);
   text-align: center;
   margin-bottom: 0.15em;
 }
 .doc-subtitle {
   font-size: 12.5pt;
-  color: #888;
+  color: var(--subtitle-color);
   font-style: italic;
   text-align: center;
   font-family: Arial, sans-serif;
@@ -117,64 +172,64 @@ body {
 }
 hr.divider {
   border: none;
-  border-top: 3px solid #2E4057;
+  border-top: 3px solid var(--divider-color);
   margin: 0 0 2.2em 0;
 }
 h1 {
   font-family: Arial, sans-serif;
   font-size: 19pt;
-  color: #2E4057;
+  color: var(--h1-color);
   margin: 2.2em 0 0.5em 0;
   padding-bottom: 0.25em;
-  border-bottom: 1px solid #c5d0dc;
+  border-bottom: 1px solid var(--h1-border);
   scroll-margin-top: 68px;
 }
 h2 {
   font-family: Arial, sans-serif;
   font-size: 13.5pt;
-  color: #4A6FA5;
+  color: var(--h2-color);
   margin: 1.8em 0 0.5em 0;
   scroll-margin-top: 68px;
 }
 h3 {
   font-family: Arial, sans-serif;
   font-size: 11pt;
-  color: #6B8CAE;
+  color: var(--h3-color);
   font-weight: bold;
   margin: 1.5em 0 0.4em 0;
   scroll-margin-top: 68px;
 }
 p { margin: 0 0 0.85em 0; font-size: 11pt; }
-.src { color: #b0b0b0; font-style: italic; font-size: 9pt; font-family: Arial, sans-serif; }
+.src { color: var(--src-color); font-style: italic; font-size: 9pt; font-family: Arial, sans-serif; }
 .bq {
   margin: 0.4em 2.8em 0.9em 2.8em;
   font-style: italic;
-  color: #444;
-  border-left: 3px solid #c8d4e0;
+  color: var(--bq-color);
+  border-left: 3px solid var(--bq-border);
   padding-left: 1.1em;
   font-size: 10.5pt;
 }
-.bq .ref { font-style: normal; font-weight: bold; color: #1a1f2e; }
+.bq .ref { font-style: normal; font-weight: bold; color: var(--bq-ref); }
 ol { margin: 0 0 0.9em 0; padding-left: 2.2em; font-size: 11pt; }
 li { margin: 0.25em 0; }
 mark {
-  background: #fff176;
-  color: inherit;
+  background: var(--mark-bg);
+  color: var(--mark-text);
   border-radius: 2px;
   padding: 0 1px;
 }
 mark.current {
-  background: #ff8f00;
-  color: white;
+  background: var(--mark-cur-bg);
+  color: var(--mark-cur-text);
   border-radius: 2px;
 }
 .timestamp {
   font-size: 8.5pt;
-  color: #ccc;
+  color: var(--ts-color);
   text-align: right;
   margin-top: 4em;
   padding-top: 0.6em;
-  border-top: 1px solid #e8e8e8;
+  border-top: 1px solid var(--ts-border);
   font-family: Arial, sans-serif;
 }
 /* ── Responsive / mobile ── */
@@ -206,11 +261,11 @@ mark.current {
 a.bibleref, #content a[href*="biblegateway"] {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px dotted #8aaac8;
+  border-bottom: 1px dotted var(--ref-border);
   cursor: help;
   transition: color 0.1s, border-color 0.1s;
 }
 a.bibleref:hover, #content a[href*="biblegateway"]:hover {
-  color: #4A6FA5;
-  border-bottom-color: #4A6FA5;
+  color: var(--ref-hover);
+  border-bottom-color: var(--ref-hover);
 }
