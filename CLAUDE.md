@@ -1,5 +1,11 @@
 # Galatians Notes — Project Instructions
 
+## Wording
+- Preserve the exact wording of all notes as supplied by the user
+- Do not paraphrase, reword, simplify, or expand any note content
+- Correct only clear errors in grammar, spelling, or punctuation, and only when the correction does not change the meaning
+- Any rewording beyond that requires explicit instruction from the user
+
 ## Attribution
 - Default source for all notes is **Bruce, *The Epistle to the Galatians* (NIGTC)** unless stated otherwise
 - Other common sources: Longenecker (*Galatians*, WBC), Dunn (*The Epistle to the Galatians*, BNTC), BDAG
