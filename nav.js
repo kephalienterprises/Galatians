@@ -26,24 +26,26 @@ var NAV_LANGS   = ['en', 'es'];
 // ── Localized strings ──────────────────────────────────────────────────────────
 var NAV_I18N = {
   en: {
-    title:         'Study Notes on Galatians',
-    chapterName:   function(n) { return 'Galatians ' + n; },
-    verseDefault:  '\u2014 Verse \u2014',
-    searchHint:    'Search notes\u2026',
-    prevTitle:     'Previous match',
-    nextTitle:     'Next match',
-    clearTitle:    'Clear',
-    themeTitle:    'Toggle dark mode'
+    title:          'Study Notes on Galatians',
+    chapterName:    function(n) { return 'Galatians ' + n; },
+    verseDefault:   '\u2014 Verse \u2014',
+    searchHint:     'Search notes\u2026',
+    prevTitle:      'Previous match',
+    nextTitle:      'Next match',
+    clearTitle:     'Clear',
+    themeTitle:     'Toggle dark mode',
+    appendixLabel:  'Appendix'
   },
   es: {
-    title:         'Notas de Estudio sobre G\u00e1latas',
-    chapterName:   function(n) { return 'G\u00e1latas ' + n; },
-    verseDefault:  '\u2014 Vers\u00edculo \u2014',
-    searchHint:    'Buscar notas\u2026',
-    prevTitle:     'Coincidencia anterior',
-    nextTitle:     'Siguiente coincidencia',
-    clearTitle:    'Limpiar',
-    themeTitle:    'Alternar modo oscuro'
+    title:          'Notas de Estudio sobre G\u00e1latas',
+    chapterName:    function(n) { return 'G\u00e1latas ' + n; },
+    verseDefault:   '\u2014 Vers\u00edculo \u2014',
+    searchHint:     'Buscar notas\u2026',
+    prevTitle:      'Coincidencia anterior',
+    nextTitle:      'Siguiente coincidencia',
+    clearTitle:     'Limpiar',
+    themeTitle:     'Alternar modo oscuro',
+    appendixLabel:  'Ap\u00e9ndice'
   }
 };
 var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
@@ -128,6 +130,15 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
     langDiv.appendChild(a);
   });
   nav.appendChild(langDiv);
+
+  nav.appendChild(sep());
+
+  // Appendix link
+  var appLink = document.createElement('a');
+  appLink.href = 'appendix-' + NAV_LANG + '.html';
+  appLink.className = 'appendix-link';
+  appLink.textContent = i18n.appendixLabel;
+  nav.appendChild(appLink);
 
   // Search group
   var sg = mk('div', 'search-group');
