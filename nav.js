@@ -26,6 +26,31 @@ var NAV_CHAPTER = parseInt(document.documentElement.getAttribute('data-chapter')
 var NAV_LANG    = document.documentElement.getAttribute('data-lang') || 'en';
 var NAV_LANGS   = ['en', 'es'];
 
+// ── Localized strings ──────────────────────────────────────────────────────────
+var NAV_I18N = {
+  en: {
+    title:         'Study Notes on Galatians',
+    chapterName:   function(n) { return 'Galatians ' + n; },
+    verseDefault:  '\u2014 Verse \u2014',
+    searchHint:    'Search notes\u2026',
+    prevTitle:     'Previous match',
+    nextTitle:     'Next match',
+    clearTitle:    'Clear',
+    themeTitle:    'Toggle dark mode'
+  },
+  es: {
+    title:         'Notas de Estudio sobre G\u00e1latas',
+    chapterName:   function(n) { return 'G\u00e1latas ' + n; },
+    verseDefault:  '\u2014 Vers\u00edculo \u2014',
+    searchHint:    'Buscar notas\u2026',
+    prevTitle:     'Coincidencia anterior',
+    nextTitle:     'Siguiente coincidencia',
+    clearTitle:    'Limpiar',
+    themeTitle:    'Alternar modo oscuro'
+  }
+};
+var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
+
 // ── Build topbar ───────────────────────────────────────────────────────────────
 (function buildTopbar() {
   var nav = document.getElementById('topbar');
@@ -41,7 +66,7 @@ var NAV_LANGS   = ['en', 'es'];
 
   // Title
   var title = mk('span', 'topbar-title');
-  title.textContent = 'Why the Law, Then?';
+  title.textContent = i18n.title;
   nav.appendChild(title);
 
   // Chapter select
@@ -51,7 +76,7 @@ var NAV_LANGS   = ['en', 'es'];
   NAV_CHAPTERS.forEach(function(ch) {
     var opt = document.createElement('option');
     opt.value = ch;
-    opt.textContent = 'Galatians ' + ch;
+    opt.textContent = i18n.chapterName(ch);
     if (ch === NAV_CHAPTER) opt.selected = true;
     chSel.appendChild(opt);
   });
@@ -63,7 +88,7 @@ var NAV_LANGS   = ['en', 'es'];
   vsSel.setAttribute('onchange', 'onVerseChange()');
   var defOpt = document.createElement('option');
   defOpt.value = '';
-  defOpt.textContent = '\u2014 Verse \u2014';
+  defOpt.textContent = i18n.verseDefault;
   vsSel.appendChild(defOpt);
   var sections = NAV_SECTIONS[String(NAV_CHAPTER)];
   if (sections) {
@@ -110,13 +135,13 @@ var NAV_LANGS   = ['en', 'es'];
   // Search group
   var sg = mk('div', 'search-group');
   sg.innerHTML =
-    '<input type="text" id="searchInput" placeholder="Search notes\u2026"' +
+    '<input type="text" id="searchInput" placeholder="' + i18n.searchHint + '"' +
       ' oninput="onSearch()" onkeydown="onSearchKey(event)">' +
     '<span class="match-count" id="matchCount"></span>' +
-    '<button id="prevBtn" onclick="stepMatch(-1)" disabled title="Previous match">\u2191</button>' +
-    '<button id="nextBtn" onclick="stepMatch(1)" disabled title="Next match">\u2193</button>' +
-    '<button id="clearBtn" onclick="clearSearch()" style="display:none" title="Clear">\u00d7</button>' +
-    '<button id="themeBtn" onclick="toggleTheme()" title="Toggle dark mode">\uD83C\uDF19</button>';
+    '<button id="prevBtn" onclick="stepMatch(-1)" disabled title="' + i18n.prevTitle + '">\u2191</button>' +
+    '<button id="nextBtn" onclick="stepMatch(1)" disabled title="' + i18n.nextTitle + '">\u2193</button>' +
+    '<button id="clearBtn" onclick="clearSearch()" style="display:none" title="' + i18n.clearTitle + '">\u00d7</button>' +
+    '<button id="themeBtn" onclick="toggleTheme()" title="' + i18n.themeTitle + '">\uD83C\uDF19</button>';
   nav.appendChild(sg);
 })();
 
