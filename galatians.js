@@ -175,6 +175,7 @@ function updateUI() {
 // ── BibleGateway tooltips ────────────────────────────────────────────────────
 BGLinks.version = "LSB";
 BGLinks.showTooltips = true;
+BGLinks.clickTooltip = true;
 BGLinks.linkVerses();
 
 function onVersionChange() {
