@@ -32,6 +32,5 @@
 - Scripture references left as plain text — BibleGateway tooltips provide the verse text on hover
 
 ## Git workflow
-- Commit changes to `main` after each change unless the user asks for a review branch
-- Do not push to `origin` unless the user explicitly asks
+- Commit directly to `main` and push immediately after each change unless the user asks for a review branch
 - Write descriptive commit messages noting which verse sections and files were changed
