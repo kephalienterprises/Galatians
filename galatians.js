@@ -142,7 +142,7 @@ function toggleTheme() {
 })();
 
 // ── BibleGateway tooltips ────────────────────────────────────────────────────
-BGLinks.version = "LSB";
+BGLinks.version = document.getElementById('refVersionSel').value || "LSB";
 BGLinks.showTooltips = true;
 BGLinks.linkVerses();
 

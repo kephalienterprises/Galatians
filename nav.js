@@ -78,12 +78,15 @@ var NAV_LANGS   = ['en', 'es'];
 
   nav.appendChild(sep());
 
-  // Bible version select
+  // Bible version select (default version is language-dependent)
+  var verVersions = NAV_LANG === 'es'
+    ? ['RVR1960', 'SBLGNT']
+    : ['LSB',     'SBLGNT'];
   var verSel = mk('select');
   verSel.id = 'refVersionSel';
   verSel.title = 'Bible version for scripture tooltips';
   verSel.setAttribute('onchange', 'onVersionChange()');
-  ['LSB', 'SBLGNT'].forEach(function(v) {
+  verVersions.forEach(function(v) {
     var opt = document.createElement('option');
     opt.value = v;
     opt.textContent = v;
