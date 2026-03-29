@@ -34,18 +34,20 @@ var NAV_I18N = {
     nextTitle:      'Next match',
     clearTitle:     'Clear',
     themeTitle:     'Toggle dark mode',
-    appendixLabel:  'Appendix'
+    appendixLabel:       'Appendix',
+    presentationsLabel:  'Presentations'
   },
   es: {
-    title:          'Notas de Estudio sobre G\u00e1latas',
-    chapterName:    function(n) { return 'G\u00e1latas ' + n; },
-    verseDefault:   '\u2014 Vers\u00edculo \u2014',
-    searchHint:     'Buscar notas\u2026',
-    prevTitle:      'Coincidencia anterior',
-    nextTitle:      'Siguiente coincidencia',
-    clearTitle:     'Limpiar',
-    themeTitle:     'Alternar modo oscuro',
-    appendixLabel:  'Ap\u00e9ndice'
+    title:               'Notas de Estudio sobre G\u00e1latas',
+    chapterName:         function(n) { return 'G\u00e1latas ' + n; },
+    verseDefault:        '\u2014 Vers\u00edculo \u2014',
+    searchHint:          'Buscar notas\u2026',
+    prevTitle:           'Coincidencia anterior',
+    nextTitle:           'Siguiente coincidencia',
+    clearTitle:          'Limpiar',
+    themeTitle:          'Alternar modo oscuro',
+    appendixLabel:       'Ap\u00e9ndice',
+    presentationsLabel:  'Presentaciones'
   }
 };
 var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
@@ -84,6 +86,11 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   appOpt.textContent = i18n.appendixLabel;
   if (NAV_CHAPTER === 0) appOpt.selected = true;
   chSel.appendChild(appOpt);
+  var presOpt = document.createElement('option');
+  presOpt.value = 'presentations';
+  presOpt.textContent = i18n.presentationsLabel;
+  if (NAV_CHAPTER === -1) presOpt.selected = true;
+  chSel.appendChild(presOpt);
   nav.appendChild(chSel);
 
   // Verse select
@@ -131,7 +138,9 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
     var a = document.createElement('a');
     a.href = NAV_CHAPTER === 0
       ? 'appendix-' + lang + '.html'
-      : 'gal' + NAV_CHAPTER + '-' + lang + '.html';
+      : NAV_CHAPTER === -1
+        ? 'presentations.html'
+        : 'gal' + NAV_CHAPTER + '-' + lang + '.html';
     a.textContent = lang.toUpperCase();
     a.className = 'lang-btn' + (lang === NAV_LANG ? ' lang-active' : '');
     langDiv.appendChild(a);
@@ -156,6 +165,10 @@ function onChapterChange() {
   var raw = document.getElementById('chapterSel').value;
   if (raw === 'appendix') {
     window.location.href = 'appendix-' + NAV_LANG + '.html';
+    return;
+  }
+  if (raw === 'presentations') {
+    window.location.href = 'presentations.html';
     return;
   }
   var val = parseInt(raw, 10);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" data-chapter="-1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notas de Estudio sobre Gálatas &mdash; Presentaciones</title>
+<link rel="stylesheet" href="galatians.css">
+<style>
+  .pres-card {
+    margin: 2em 0;
+    border: 1px solid var(--h1-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pres-card-title {
+    font-family: Arial, sans-serif;
+    font-size: 13pt;
+    font-weight: bold;
+    color: var(--h2-color);
+    padding: 0.7em 1.2em 0.5em 1.2em;
+    border-bottom: 1px solid var(--h1-border);
+  }
+  .pres-embed {
+    width: 100%;
+    height: 520px;
+    border: none;
+    display: block;
+    background: #f0f0f0;
+  }
+  .pres-download {
+    display: block;
+    padding: 0.55em 1.2em;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    color: var(--src-color);
+    border-top: 1px solid var(--h1-border);
+  }
+  .pres-download a {
+    color: var(--h2-color);
+    text-decoration: none;
+  }
+  .pres-download a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav id="topbar"></nav>
+
+<main class="page" id="content">
+
+<p class="doc-title">Notas de Estudio sobre Gálatas</p>
+<p class="doc-subtitle">Presentaciones</p>
+<hr class="divider">
+
+<div class="pres-card" id="card-por-que">
+  <div class="pres-card-title">&iquest;Por qu&eacute; la Ley entonces? &mdash; G&aacute;latas 3:19</div>
+  <iframe class="pres-embed" id="embed-por-que" src="" allowfullscreen></iframe>
+  <div class="pres-download">
+    <a href="Presentations/Por_que_la_Ley_entonces.pptx" download>Descargar .pptx</a>
+  </div>
+</div>
+
+<p class="timestamp" id="lastmod"></p>
+
+</main>
+
+<script>
+(function() {
+  var base = window.location.href.replace(/[^/]*$/, '');
+  var fileUrl = base + 'Presentations/Por_que_la_Ley_entonces.pptx';
+  var embedUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fileUrl);
+  document.getElementById('embed-por-que').src = embedUrl;
+})();
+</script>
+<script src="nav.js"></script>
+<script src="galatians.js"></script>
+</body>
+</html>
