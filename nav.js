@@ -79,6 +79,11 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
     if (ch === NAV_CHAPTER) opt.selected = true;
     chSel.appendChild(opt);
   });
+  var appOpt = document.createElement('option');
+  appOpt.value = 'appendix';
+  appOpt.textContent = i18n.appendixLabel;
+  if (NAV_CHAPTER === 0) appOpt.selected = true;
+  chSel.appendChild(appOpt);
   nav.appendChild(chSel);
 
   // Verse select
@@ -124,21 +129,14 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   var langDiv = mk('div', 'lang-toggle');
   NAV_LANGS.forEach(function(lang) {
     var a = document.createElement('a');
-    a.href = 'gal' + NAV_CHAPTER + '-' + lang + '.html';
+    a.href = NAV_CHAPTER === 0
+      ? 'appendix-' + lang + '.html'
+      : 'gal' + NAV_CHAPTER + '-' + lang + '.html';
     a.textContent = lang.toUpperCase();
     a.className = 'lang-btn' + (lang === NAV_LANG ? ' lang-active' : '');
     langDiv.appendChild(a);
   });
   nav.appendChild(langDiv);
-
-  nav.appendChild(sep());
-
-  // Appendix link
-  var appLink = document.createElement('a');
-  appLink.href = 'appendix-' + NAV_LANG + '.html';
-  appLink.className = 'appendix-link';
-  appLink.textContent = i18n.appendixLabel;
-  nav.appendChild(appLink);
 
   // Search group
   var sg = mk('div', 'search-group');
@@ -155,7 +153,12 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
 
 // ── Chapter navigation ─────────────────────────────────────────────────────────
 function onChapterChange() {
-  var val = parseInt(document.getElementById('chapterSel').value, 10);
+  var raw = document.getElementById('chapterSel').value;
+  if (raw === 'appendix') {
+    window.location.href = 'appendix-' + NAV_LANG + '.html';
+    return;
+  }
+  var val = parseInt(raw, 10);
   if (val !== NAV_CHAPTER) {
     window.location.href = 'gal' + val + '-' + NAV_LANG + '.html';
   }
