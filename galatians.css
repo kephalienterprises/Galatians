@@ -302,12 +302,23 @@ mark.current {
     height: auto;
     flex-wrap: wrap;
     padding: 8px 12px;
-    gap: 8px;
+    gap: 6px;
   }
   .topbar-title { display: none; }
   .topbar-sep   { display: none; }
-  .topbar select { flex: 1; min-width: 0; }
+
+  /* Row 1: chapter select + verse select */
+  #chapterSel { order: 1; flex: 0 0 auto; width: 52px; }
+  #verseSel   { order: 1; flex: 1 1 0; min-width: 0; }
+
+  /* Row 2: Bible version select, lang toggle, appendix link */
+  #refVersionSel  { order: 2; flex: 0 0 auto; width: 96px; }
+  .lang-toggle    { order: 2; flex: 0 0 auto; }
+  .appendix-link  { order: 2; flex: 0 0 auto; font-size: 12px; }
+
+  /* Row 3: search */
   .search-group {
+    order: 3;
     width: 100%;
     margin-left: 0;
   }
@@ -316,7 +327,8 @@ mark.current {
     width: auto;
     min-width: 0;
   }
-  h1, h2, h3 { scroll-margin-top: 108px; }
+
+  h1, h2, h3 { scroll-margin-top: 128px; }
   .page { padding-left: 18px; padding-right: 18px; }
   .bq { margin-left: 1.2em; margin-right: 1.2em; }
   .chap-nav {

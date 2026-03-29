@@ -75,7 +75,7 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   NAV_CHAPTERS.forEach(function(ch) {
     var opt = document.createElement('option');
     opt.value = ch;
-    opt.textContent = i18n.chapterName(ch);
+    opt.textContent = String(ch);
     if (ch === NAV_CHAPTER) opt.selected = true;
     chSel.appendChild(opt);
   });
@@ -94,7 +94,7 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
     sections.forEach(function(s) {
       var opt = document.createElement('option');
       opt.value = s.id;
-      opt.textContent = s.label;
+      opt.textContent = s.label.replace(/^\d+:/, '');
       vsSel.appendChild(opt);
     });
   }
