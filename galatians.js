@@ -2,7 +2,10 @@
 (function removeSequenceBadges() {
   document.querySelectorAll('.timeline-confidence').forEach(function(el) {
     var label = el.textContent.toLowerCase();
-    if (label.indexOf('high sequence') !== -1 || label.indexOf('secuencia alta') !== -1) {
+    if (label.indexOf('high sequence') !== -1 ||
+        label.indexOf('secuencia alta') !== -1 ||
+        label.indexOf('high duration') !== -1 ||
+        label.indexOf('duraci\u00f3n alta') !== -1) {
       el.remove();
     }
   });
