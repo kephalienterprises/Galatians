@@ -16,6 +16,8 @@ The site is split into one HTML file per chapter per language:
 | `gal3-es.html` | Galatians 3 — Spanish |
 | `gal4-en.html` | Galatians 4 — English |
 | `gal4-es.html` | Galatians 4 — Spanish |
+| `timeline-en.html` | Paul’s missionary journeys — English |
+| `timeline-es.html` | Paul’s missionary journeys — Spanish |
 | `index.html` | Redirect to `gal3-en.html` |
 
 Supporting files:

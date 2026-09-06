@@ -16,6 +16,15 @@ var NAV_SECTIONS = {
     {label: '4:1', id: 'gal-4-1'},
     {label: '4:2', id: 'gal-4-2'},
     {label: '4:3', id: 'gal-4-3'}
+  ],
+  '-2': [
+    {label: 'Overview',       id: 'timeline-overview'},
+    {label: 'Preparation',    id: 'timeline-preparation'},
+    {label: 'First journey',  id: 'timeline-first'},
+    {label: 'Council',        id: 'timeline-council'},
+    {label: 'Second journey', id: 'timeline-second'},
+    {label: 'Third journey',  id: 'timeline-third'},
+    {label: 'Rome voyage',    id: 'timeline-rome'}
   ]
 };
 
@@ -35,7 +44,9 @@ var NAV_I18N = {
     clearTitle:     'Clear',
     themeTitle:     'Toggle dark mode',
     appendixLabel:       'Appendix',
-    presentationsLabel:  'Presentations'
+    presentationsLabel:  'Presentations',
+    timelineLabel:       'Timeline',
+    sectionDefault:      '\u2014 Section \u2014'
   },
   es: {
     title:               'Notas de Estudio sobre G\u00e1latas',
@@ -47,7 +58,9 @@ var NAV_I18N = {
     clearTitle:          'Limpiar',
     themeTitle:          'Alternar modo oscuro',
     appendixLabel:       'Ap\u00e9ndice',
-    presentationsLabel:  'Presentaciones'
+    presentationsLabel:  'Presentaciones',
+    timelineLabel:       'Cronolog\u00eda',
+    sectionDefault:      '\u2014 Secci\u00f3n \u2014'
   }
 };
 var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
@@ -91,6 +104,11 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   presOpt.textContent = i18n.presentationsLabel;
   if (NAV_CHAPTER === -1) presOpt.selected = true;
   chSel.appendChild(presOpt);
+  var timelineOpt = document.createElement('option');
+  timelineOpt.value = 'timeline';
+  timelineOpt.textContent = i18n.timelineLabel;
+  if (NAV_CHAPTER === -2) timelineOpt.selected = true;
+  chSel.appendChild(timelineOpt);
   nav.appendChild(chSel);
 
   // Verse select
@@ -99,7 +117,7 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   vsSel.setAttribute('onchange', 'onVerseChange()');
   var defOpt = document.createElement('option');
   defOpt.value = '';
-  defOpt.textContent = i18n.verseDefault;
+  defOpt.textContent = NAV_CHAPTER === -2 ? i18n.sectionDefault : i18n.verseDefault;
   vsSel.appendChild(defOpt);
   var sections = NAV_SECTIONS[String(NAV_CHAPTER)];
   if (sections) {
@@ -140,6 +158,8 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
       ? 'appendix-' + lang + '.html'
       : NAV_CHAPTER === -1
         ? 'presentations.html'
+        : NAV_CHAPTER === -2
+          ? 'timeline-' + lang + '.html'
         : 'gal' + NAV_CHAPTER + '-' + lang + '.html';
     a.textContent = lang.toUpperCase();
     a.className = 'lang-btn' + (lang === NAV_LANG ? ' lang-active' : '');
@@ -169,6 +189,10 @@ function onChapterChange() {
   }
   if (raw === 'presentations') {
     window.location.href = 'presentations.html';
+    return;
+  }
+  if (raw === 'timeline') {
+    window.location.href = 'timeline-' + NAV_LANG + '.html';
     return;
   }
   var val = parseInt(raw, 10);
