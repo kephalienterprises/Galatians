@@ -1,3 +1,13 @@
+// Remove only the sequence badges requested for the detailed timeline.
+(function removeSequenceBadges() {
+  document.querySelectorAll('.timeline-confidence').forEach(function(el) {
+    var label = el.textContent.toLowerCase();
+    if (label.indexOf('high sequence') !== -1 || label.indexOf('secuencia alta') !== -1) {
+      el.remove();
+    }
+  });
+})();
+
 // ── Search ──────────────────────────────────────────────────────────────────
 var matches = [];
 var cur = -1;
