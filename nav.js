@@ -18,13 +18,27 @@ var NAV_SECTIONS = {
     {label: '4:3', id: 'gal-4-3'}
   ],
   '-2': [
-    {label: 'Overview',       id: 'timeline-overview'},
-    {label: 'Preparation',    id: 'timeline-preparation'},
-    {label: 'First journey',  id: 'timeline-first'},
-    {label: 'Council',        id: 'timeline-council'},
-    {label: 'Second journey', id: 'timeline-second'},
-    {label: 'Third journey',  id: 'timeline-third'},
-    {label: 'Rome voyage',    id: 'timeline-rome'}
+    {en: 'Overview', es: 'Panorama', id: 'timeline-overview'},
+    {en: 'Conversion', es: 'Conversi\u00f3n', id: 'timeline-conversion'},
+    {en: 'Arabia', es: 'Arabia', id: 'timeline-arabia'},
+    {en: 'Damascus', es: 'Damasco', id: 'timeline-damascus'},
+    {en: 'Jerusalem', es: 'Jerusal\u00e9n', id: 'timeline-jerusalem'},
+    {en: 'Syria / Cilicia', es: 'Siria / Cilicia', id: 'timeline-syria'},
+    {en: 'Antioch', es: 'Antioqu\u00eda', id: 'timeline-antioch'},
+    {en: 'Cyprus', es: 'Chipre', id: 'timeline-first-cyprus'},
+    {en: 'Southern Galatia', es: 'Sur de Galacia', id: 'timeline-first-galatia'},
+    {en: 'First return', es: 'Primer regreso', id: 'timeline-first-return'},
+    {en: 'Jerusalem Council', es: 'Concilio de Jerusal\u00e9n', id: 'timeline-council'},
+    {en: 'Galatia revisited', es: 'Galacia visitada', id: 'timeline-second-galatia'},
+    {en: 'Macedonia', es: 'Macedonia', id: 'timeline-second-macedonia'},
+    {en: 'Corinth', es: 'Corinto', id: 'timeline-second-corinth'},
+    {en: 'Return to Antioch', es: 'Regreso a Antioqu\u00eda', id: 'timeline-second-return'},
+    {en: 'Galatia / Phrygia', es: 'Galacia / Frigia', id: 'timeline-third-galatia'},
+    {en: 'Ephesus', es: '\u00c9feso', id: 'timeline-third-ephesus'},
+    {en: 'Macedonia / Greece', es: 'Macedonia / Grecia', id: 'timeline-third-macedonia'},
+    {en: 'Jerusalem arrest', es: 'Arresto en Jerusal\u00e9n', id: 'timeline-third-jerusalem'},
+    {en: 'Caesarea', es: 'Cesarea', id: 'timeline-caesarea'},
+    {en: 'Rome', es: 'Roma', id: 'timeline-rome'}
   ]
 };
 
@@ -124,7 +138,7 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
     sections.forEach(function(s) {
       var opt = document.createElement('option');
       opt.value = s.id;
-      opt.textContent = s.label.replace(/^\d+:/, '');
+      opt.textContent = (s[NAV_LANG] || s.label).replace(/^\d+:/, '');
       vsSel.appendChild(opt);
     });
   }
