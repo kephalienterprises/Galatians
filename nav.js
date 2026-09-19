@@ -58,6 +58,7 @@ var NAV_I18N = {
     clearTitle:     'Clear',
     themeTitle:     'Toggle dark mode',
     introductionLabel: 'Introduction',
+    apostleLabel:        'Apostle',
     appendixLabel:       'Appendix',
     presentationsLabel:  'Presentations',
     timelineLabel:       'Timeline',
@@ -73,6 +74,7 @@ var NAV_I18N = {
     clearTitle:          'Limpiar',
     themeTitle:          'Alternar modo oscuro',
     introductionLabel:   'Introducción',
+    apostleLabel:        'Ap\u00f3stol',
     appendixLabel:       'Ap\u00e9ndice',
     presentationsLabel:  'Presentaciones',
     timelineLabel:       'Cronolog\u00eda',
@@ -130,6 +132,11 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   introOpt.textContent = i18n.introductionLabel;
   if (NAV_CHAPTER === -3) introOpt.selected = true;
   chSel.appendChild(introOpt);
+  var apostleOpt = document.createElement('option');
+  apostleOpt.value = 'apostle';
+  apostleOpt.textContent = i18n.apostleLabel;
+  if (NAV_CHAPTER === -4) apostleOpt.selected = true;
+  chSel.appendChild(apostleOpt);
   nav.appendChild(chSel);
 
   // Verse select
@@ -175,7 +182,9 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
   var langDiv = mk('div', 'lang-toggle');
   NAV_LANGS.forEach(function(lang) {
     var a = document.createElement('a');
-    a.href = NAV_CHAPTER === -3
+    a.href = NAV_CHAPTER === -4
+      ? 'apostle-' + lang + '.html'
+      : NAV_CHAPTER === -3
       ? 'introduction-' + lang + '.html'
       : NAV_CHAPTER === 0
       ? 'appendix-' + lang + '.html'
@@ -206,6 +215,10 @@ var i18n = NAV_I18N[NAV_LANG] || NAV_I18N.en;
 // ── Chapter navigation ─────────────────────────────────────────────────────────
 function onChapterChange() {
   var raw = document.getElementById('chapterSel').value;
+  if (raw === 'apostle') {
+    window.location.href = 'apostle-' + NAV_LANG + '.html';
+    return;
+  }
   if (raw === 'introduction') {
     window.location.href = 'introduction-' + NAV_LANG + '.html';
     return;
